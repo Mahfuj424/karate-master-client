@@ -1,12 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.jpg'
+import { AuthContext } from '../../../Provider/AuthProvider';
+import { FaArrowAltCircleRight } from "react-icons/fa"
 
 const Navbar = () => {
+     const { user, logOut } = useContext(AuthContext);
 
-     const navItems = <div className='flex gap-5'>
-          <a><NavLink
+
+     const handleLogout = () => {
+          logOut()
+     }
+
+     const navItems = <div className='flex gap-5 items-center'>
+          <a className='hover:text-red-400'><NavLink
                to="/"
                className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
@@ -14,7 +22,7 @@ const Navbar = () => {
           >
                Home
           </NavLink></a>
-          <a><NavLink
+          <a className='hover:text-red-400'><NavLink
                to="/instructor"
                className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
@@ -22,7 +30,7 @@ const Navbar = () => {
           >
                Instructor
           </NavLink></a>
-          <a><NavLink
+          <a className='hover:text-red-400'><NavLink
                to="/classes"
                className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
@@ -30,7 +38,7 @@ const Navbar = () => {
           >
                Classes
           </NavLink></a>
-          <a><NavLink
+          <a className='hover:text-red-400'><NavLink
                to="/dashboard"
                className={({ isActive, isPending }) =>
                     isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
@@ -38,6 +46,31 @@ const Navbar = () => {
           >
                Dashboard
           </NavLink></a>
+          {
+               user ?
+
+                    <button className='flex items-center gap-1' onClick={handleLogout}>LogOut <FaArrowAltCircleRight/></button>
+                    :
+                    <>
+
+                         <a className='hover:text-red-400'><NavLink
+                              to="/register"
+                              className={({ isActive, isPending }) =>
+                                   isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+                              }
+                         >
+                              Register
+                         </NavLink></a>
+                         <a className='hover:text-red-400'><NavLink
+                              to="/login"
+                              className={({ isActive, isPending }) =>
+                                   isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+                              }
+                         >
+                              Login
+                         </NavLink></a>
+                    </>
+          }
      </div>
      return (
           <div className='z-10 bg-black shadow-2xl  h-22 pt-3 text-white'>
@@ -59,7 +92,7 @@ const Navbar = () => {
                          </ul>
                     </div>
                     <div className="navbar-end">
-                         <button className='btn '>button</button>
+                         <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" />
                     </div>
                </div>
           </div>
