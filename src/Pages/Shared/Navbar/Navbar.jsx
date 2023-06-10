@@ -15,38 +15,38 @@ const Navbar = () => {
      }
 
      const navItems = <div className='flex gap-5 items-center'>
-          <a className='hover:text-red-400'><NavLink
+          <p className='hover:text-red-400'><NavLink
                to="/"
-               className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+               className={({ isActive }) =>
+                   isActive ? "text-red-400 border-b-2" : ""
                }
           >
                Home
-          </NavLink></a>
-          <a className='hover:text-red-400'><NavLink
+          </NavLink></p>
+          <p className='hover:text-red-400 cursor-pointer'><NavLink
                to="/instructor"
-               className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+               className={({ isActive  }) =>
+                     isActive ? "text-red-400 border-b-2" : ""
                }
           >
                Instructor
-          </NavLink></a>
-          <a className='hover:text-red-400'><NavLink
+          </NavLink></p>
+          <p className='hover:text-red-400'><NavLink
                to="/classes"
-               className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+               className={({ isActive }) =>
+                     isActive ? "text-red-400 border-b-2" : ""
                }
           >
                Classes
-          </NavLink></a>
-          <a className='hover:text-red-400'><NavLink
+          </NavLink></p>
+          <p className='hover:text-red-400'><NavLink
                to="/dashboard"
-               className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+               className={({ isActive }) =>
+                    isActive ? "text-red-400 border-b-2" : ""
                }
           >
                Dashboard
-          </NavLink></a>
+          </NavLink></p>
           {
                user ?
 
@@ -54,22 +54,22 @@ const Navbar = () => {
                     :
                     <>
 
-                         <a className='hover:text-red-400'><NavLink
+                         <p className='hover:text-red-400'><NavLink
                               to="/register"
-                              className={({ isActive, isPending }) =>
-                                   isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+                              className={({ isActive }) =>
+                                  isActive ? "text-red-400 border-b-2" : ""
                               }
                          >
                               Register
-                         </NavLink></a>
-                         <a className='hover:text-red-400'><NavLink
+                         </NavLink></p>
+                         <p className='hover:text-red-400'><NavLink
                               to="/login"
-                              className={({ isActive, isPending }) =>
-                                   isPending ? "pending" : isActive ? "text-red-400 border-b-2" : ""
+                              className={({ isActive }) =>
+                                  isActive ? "text-red-400 border-b-2" : ""
                               }
                          >
                               Login
-                         </NavLink></a>
+                         </NavLink></p>
                     </>
           }
      </div>

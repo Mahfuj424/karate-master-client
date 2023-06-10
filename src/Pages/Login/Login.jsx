@@ -1,35 +1,37 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
 
-    const { register, handleSubmit,  formState: { errors } } = useForm();
-     const {  signIn, googleSignIn } = useContext(AuthContext);
-     const navigate = useNavigate();
+    const { register, handleSubmit } = useForm();
+    const { signIn, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation()
+    const pathName = location.state?.from?.pathname || '/'
 
     const onSubmit = (data) => {
         console.log(data);
         signIn(data.email, data.password)
             .then(result => {
-                navigate('/')
+                navigate(pathName)
                 console.log(result);
             })
             .catch(err => {
-            console.log(err.message);
-        })
+                console.log(err.message);
+            })
     }
 
     const handleGoogleUser = () => {
         googleSignIn()
-            .then(result => {
-            navigate('/')
+            .then(() => {
+                navigate(pathName)
             })
             .catch(err => {
-            console.log(err.message);
-        })
+                console.log(err.message);
+            })
     }
 
     return (
@@ -49,7 +51,7 @@ const Login = () => {
                                     <span className="label-text text-white">Password</span>
                                 </label>
                                 <input type="password"  {...register("password", { required: true })} name="password" placeholder="Password" className="input input-bordered text-black" />
-                                
+
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn bg-red-400 border-none hover:bg-red-500" type="submit" value="Sign Up" />

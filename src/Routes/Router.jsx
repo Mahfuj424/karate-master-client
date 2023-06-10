@@ -7,6 +7,12 @@ import Instructor from "../Pages/instructor/Instructor";
 import Classes from "../Pages/Classes/Classes";
 import Regiser from "../Pages/Register/Regiser";
 import Login from "../Pages/Login/Login";
+import Dashboard from "../Layout/Dashboard";
+import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
+import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
+import EnrolledClasses from "../Pages/Dashboard/EnrolledClass/EnrolledClasses";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+// import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 
 const Router = createBrowserRouter([
@@ -36,6 +42,28 @@ const Router = createBrowserRouter([
          }
       ]
       
-}
+   },
+   {
+      path: 'dashboard',
+      element: <Dashboard />,
+      children: [
+         {
+            path: '/dashboard/studentHome',
+            element: <StudentHome/>
+         },
+         {
+            path: 'myClasses',
+            element: <MyClasses/>
+         },
+         {
+            path: 'enrolledClasses',
+            element: <EnrolledClasses/>
+         },
+         {
+            path: 'payment',
+            element: <Payment/>
+         }
+      ]
+   }
 ])
 export default Router;

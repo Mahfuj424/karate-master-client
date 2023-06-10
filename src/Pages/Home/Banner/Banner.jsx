@@ -21,7 +21,7 @@ const Banner = () => {
                                    <button className="btn bg-red-500 border-none text-white uppercase mt-20">get a free lesson</button>
                               </div>
                          </div>
-                         <img className="w-[500px] mt-36  h-[600px]" src={image2} alt="" />
+                         <img className="w-[500px] mt-36  h-[100vh]" src={image2} alt="" />
                     </div></SwiperSlide>
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
@@ -33,7 +33,7 @@ const Banner = () => {
                                    <button className="btn bg-red-500 border-none text-white uppercase mt-20">get a free lesson</button>
                               </div>
                          </div>
-                         <img className="w-[500px] mt-36  h-[600px]" src={image3} alt="" />
+                         <img className="w-[500px] mt-36  h-[100vh]" src={image3} alt="" />
                     </div></SwiperSlide>
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
@@ -45,7 +45,7 @@ const Banner = () => {
                                    <button className="btn bg-red-500 border-none text-white uppercase mt-20">get a free lesson</button>
                               </div>
                          </div>
-                         <img className="w-[500px] mt-36  h-[600px]" src={image1} alt="" />
+                         <img className="w-[500px] mt-36  h-[100vh]" src={image1} alt="" />
                     </div></SwiperSlide>
                </Swiper>
           </div>
