@@ -54,14 +54,14 @@ const Login = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn bg-red-400 border-none hover:bg-red-500" type="submit" value="Sign Up" />
+                                <input className="btn bg-red-400 border-none hover:bg-red-500" type="submit" value="Login" />
                             </div>
                             <div className="">
                                 <button className='btn border-none w-full hover:bg-red-500 bg-red-400 ' onClick={handleGoogleUser}><span><FcGoogle /></span>Google</button>
                             </div>
                         </form>
 
-                        <p className="p-3"><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className="p-3"><small>Already have an account <Link to="/register">register</Link></small></p>
                     </div>
                 </div>
             </div>

@@ -8,10 +8,11 @@ import Classes from "../Pages/Classes/Classes";
 import Regiser from "../Pages/Register/Regiser";
 import Login from "../Pages/Login/Login";
 import Dashboard from "../Layout/Dashboard";
-import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
+// import StudentHome from "../Pages/Dashboard/StudentHome/StudentHome";
 import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import EnrolledClasses from "../Pages/Dashboard/EnrolledClass/EnrolledClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 // import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 
@@ -45,12 +46,12 @@ const Router = createBrowserRouter([
    },
    {
       path: 'dashboard',
-      element: <Dashboard />,
+      element:<PrivetRoute><Dashboard /></PrivetRoute>,
       children: [
-         {
-            path: '/dashboard',
-            element: <StudentHome/>
-         },
+         // {
+         //    path: 'dashboard',
+         //    element: <StudentHome/>
+         // },
          {
             path: 'myClasses',
             element: <MyClasses/>

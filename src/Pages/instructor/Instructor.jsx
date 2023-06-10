@@ -2,7 +2,7 @@
 
 const Instructor = () => {
      return (
-          <div className="text-white h-96">
+          <div className="text-white  h-64">
                this is Instructor
           </div>
      );

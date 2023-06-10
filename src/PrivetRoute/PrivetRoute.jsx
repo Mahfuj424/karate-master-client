@@ -1,26 +1,25 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../Provider/AuthProvider';
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { Navigate } from "react-router-dom";
 
-const PrivetRoute = ({children}) => {
+
+const PrivetRoute = ({ children }) => {
+
     const { user, loading } = useContext(AuthContext);
-    
-    const location = useLocation();
-    
-    if (loading) {
-        return
-    }
 
     if (user) {
-        return children;
+        return children
+    }
+
+    if (loading) {
+       return  <progress className="progress progress-success w-56"></progress>
     }
 
     
 
     return (
-        <Navigate to='/login' state={{ from: location }} replace ></Navigate>
+        <Navigate to='/login' state={{pathName: location}}></Navigate>
     );
 };
 

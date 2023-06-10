@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 const Regiser = () => {
 
      const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -13,17 +14,50 @@ const Regiser = () => {
 
      const handleGoogleUser = () => {
           googleSignIn()
-          .then(result => {
-               navigate('/')
-               console.log(result);
-          })
-          .catch(err => console.log(err.message))
+               .then(result => {
+                    navigate('/')
+                    console.log(result);
+               })
+               .catch(err => console.log(err.message))
      }
+
+
 
      const onSubmit = data => {
 
           createUser(data.email, data.password)
                .then(result => {
+
+
+                    const image = data.image[0]
+
+                    const formData = new FormData()
+                    formData.append('image', image)
+
+                    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`
+
+                    fetch(url, {
+                         method: 'POST',
+                         body: formData,
+                    })
+                         .then(res => res.json())
+                         .then(imageData => {
+                              const imageUrl = imageData.data.display_url;
+                              updateUserProfile(data.name, imageUrl)
+                                   .then(result => {
+                                        console.log(result);
+                                   })
+                                   .catch(err => {
+                                        console.log(err.message);
+                                   })
+                         })
+                         .catch(err => {
+                              console.log(err.message);
+                              toast.error(err.message)
+                         })
+
+
+
 
                     const loggedUser = result.user;
                     console.log(loggedUser);
@@ -64,7 +98,7 @@ const Regiser = () => {
           <div>
                <div className="hero min-h-screen">
                     <div className="hero-content">
-                         <div className="card shadow-2xl bg-gray-700 text-white w-96">
+                         <div className="card shadow-2xl bg-gray-700 text-white w-96 mt-20">
                               <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                                    <div className="form-control">
                                         <label className="label">
@@ -114,10 +148,10 @@ const Regiser = () => {
                                         <input className="btn bg-red-400 border-none hover:bg-red-500" type="submit" value="Sign Up" />
                                    </div>
                                    <div className="">
-                                   <button className='btn border-none w-full hover:bg-red-500 bg-red-400 ' onClick={handleGoogleUser}><span><FcGoogle /></span>Google</button>
-                              </div>
+                                        <button className='btn border-none w-full hover:bg-red-500 bg-red-400 ' onClick={handleGoogleUser}><span><FcGoogle /></span>Google</button>
+                                   </div>
                               </form>
-                              
+
                               <p className="p-3"><small>Already have an account <Link to="/login">Login</Link></small></p>
                          </div>
                     </div>

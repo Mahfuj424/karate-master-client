@@ -9,11 +9,11 @@ import image3 from '../../../assets/images/martial-arts5.jpg'
 
 const Banner = () => {
      return (
-          <div className="text-white bg-image bg-black px-5 h-[100vh] flex items-center">
+          <div className="text-white bg-image bg-black px-5 h-full flex items-center">
                <Swiper navigation={true} autoplay modules={[Navigation, Autoplay]} className="mySwiper ">
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
-                         <div className="flex items-center ">
-                              <div className="mt-10">
+                         <div className="flex items-center">
+                              <div className="lg:mt-0 mt-20">
                                    <h1 className="text-6xl font-semibold">WELCOME TO<br />
                                    KARATE AND MARTIAL <br />
                                    ARTS SCHOOL</h1>
@@ -25,7 +25,7 @@ const Banner = () => {
                     </div></SwiperSlide>
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
-                              <div className="mt-10">
+                              <div className="lg:mt-0 mt-20">
                                    <h1 className="text-6xl font-semibold">EVERY GREAT <br />
                                         JOURNEY STARTS WITH <br />
                                         ONE STEP!</h1>
@@ -33,11 +33,11 @@ const Banner = () => {
                                    <button className="btn bg-red-500 border-none text-white uppercase mt-20">get a free lesson</button>
                               </div>
                          </div>
-                         <img className="w-[500px] mt-36  h-[100vh]" src={image3} alt="" />
+                         <img className="w-[500px] lg:mt-36 mt-52  h-[100vh]" src={image3} alt="" />
                     </div></SwiperSlide>
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
-                              <div className="mt-10">
+                              <div className="lg:mt-0 mt-20">
                                    <h1 className="text-6xl font-semibold">BUILDING STRONGER<br />
                                    MINDS & BODIES<br />
                                    SINCE 1986.</h1>
@@ -45,7 +45,7 @@ const Banner = () => {
                                    <button className="btn bg-red-500 border-none text-white uppercase mt-20">get a free lesson</button>
                               </div>
                          </div>
-                         <img className="w-[500px] mt-36  h-[100vh]" src={image1} alt="" />
+                         <img className="w-[500px] lg:mt-36 mt-52  h-[100vh]" src={image1} alt="" />
                     </div></SwiperSlide>
                </Swiper>
           </div>

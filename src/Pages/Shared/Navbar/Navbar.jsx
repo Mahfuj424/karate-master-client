@@ -1,102 +1,55 @@
-/* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { RxAvatar } from 'react-icons/rx'
 import logo from '../../../assets/images/logo.jpg'
+import { FiLogOut } from 'react-icons/fi'
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { FaArrowAltCircleRight } from "react-icons/fa"
-import { RxAvatar } from "react-icons/rx";
-
 const Navbar = () => {
-     const { user, logOut } = useContext(AuthContext);
-
-
-     const handleLogout = () => {
-          logOut()
-     }
-
-     const navItems = <div className='flex gap-5 items-center'>
-          <p className='hover:text-red-400'><NavLink
-               to="/"
-               className={({ isActive }) =>
-                   isActive ? "text-red-400 border-b-2" : ""
-               }
-          >
-               Home
-          </NavLink></p>
-          <p className='hover:text-red-400 cursor-pointer'><NavLink
-               to="/instructor"
-               className={({ isActive  }) =>
-                     isActive ? "text-red-400 border-b-2" : ""
-               }
-          >
-               Instructor
-          </NavLink></p>
-          <p className='hover:text-red-400'><NavLink
-               to="/classes"
-               className={({ isActive }) =>
-                     isActive ? "text-red-400 border-b-2" : ""
-               }
-          >
-               Classes
-          </NavLink></p>
-          <p className='hover:text-red-400'><NavLink
-               to="/dashboard"
-               className={({ isActive }) =>
-                    isActive ? "text-red-400 border-b-2" : ""
-               }
-          >
-               Dashboard
-          </NavLink></p>
-          {
+     const { user, logOut } = useContext(AuthContext)
+     const navItem = <div className='md:space-x-8 space-y-3 text-white md:space-y-0 pb-2 mb:pb-0 md:flex'>
+          <p className='text-lg hover:text-rose-500 transition-all'><NavLink className={({ isActive }) => isActive ? 'border-b-2 pb-2 text-rose-500 border-rose-500' : ''} to='/'>Home</NavLink></p>
+          <p className='text-lg hover:text-rose-500 transition-all'><NavLink className={({ isActive }) => isActive ? 'border-b-2 pb-2 text-rose-500 border-rose-500' : ''} to='/instructor'>Instructors</NavLink></p>
+          <p className='text-lg hover:text-rose-500 transition-all'><NavLink className={({ isActive }) => isActive ? 'border-b-2 pb-2 text-rose-500 border-rose-500' : ''} to='/classes'>Classes</NavLink></p>
+          <p className='text-lg hover:text-rose-500 transition-all'>{user && <NavLink className={({ isActive }) => isActive ? 'border-b-2 pb-2 text-rose-500 border-rose-500' : ''} to='/dashboard'>Dashboard</NavLink>}</p>
+          <p className='text-lg hover:text-rose-500 transition-all '> {
                user ?
-
-                    <button className='flex items-center gap-1' onClick={handleLogout}>LogOut <FaArrowAltCircleRight/></button>
+                    <NavLink onClick={() => logOut()}><span className='flex items-center gap-1'>
+                         <FiLogOut /> <span>LogOut</span></span></NavLink>
                     :
-                    <>
+                    <NavLink className={({ isActive }) => isActive ? 'border-b-2 pb-2 text-rose-500 border-rose-500' : ''} to='/login'>Login</NavLink>
+                    
+          }</p>
 
-                         <p className='hover:text-red-400'><NavLink
-                              to="/register"
-                              className={({ isActive }) =>
-                                  isActive ? "text-red-400 border-b-2" : ""
-                              }
-                         >
-                              Register
-                         </NavLink></p>
-                         <p className='hover:text-red-400'><NavLink
-                              to="/login"
-                              className={({ isActive }) =>
-                                  isActive ? "text-red-400 border-b-2" : ""
-                              }
-                         >
-                              Login
-                         </NavLink></p>
-                    </>
-          }
+
+
      </div>
      return (
-          <div className='z-10 bg-black shadow-2xl  h-22 pt-3 text-white'>
-               <div className="navbar container ">
-                    <div className="navbar-start ">
+          <div className='fixed font-semibold pt-4 w-full z-10 bg-transparent'>
+               <div className="navbar container p-0">
+                    <div className="navbar-start">
                          <div className="dropdown">
                               <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                               </label>
-                              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                                   {navItems}
+                              <ul tabIndex={0} className="menu text-black menu-sm dropdown-content mt-3 p-2 shadow bg-black rounded-box w-52 md:flex items-center">
+                                   {navItem}
                               </ul>
                          </div>
-                         <a className="uppercase text-lg flex gap-5"> <img className='w-14 h-14 rounded-xl' src={logo} alt="" /><p>first karate <br /> martial arts school</p></a>
+                         <Link to='/' className="text-xl  flex items-center cursor-pointer">
+                              <img className='w-[50px]' src={logo} alt="" /> <span className='text-white ms-2'>Karate Master</span>
+                         </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
-                         <ul className="menu menu-horizontal px-1">
-                              {navItems}
+                         <ul className="menu menu-horizontal items-center px-1">
+                              {navItem}
                          </ul>
                     </div>
                     <div className="navbar-end">
-                         {
-                              user ? <img className='w-12 h-12 rounded-full' src={`${user?.photoURL}`} alt="" />
-                                   : <RxAvatar className='w-12 h-12'/>
-                         }
+                         <div className="avatar">
+                              <div className=" w-[40px] rounded-full ">
+                                   {user ? <img title={user?.displayName} src={user?.photoURL} /> : <RxAvatar className='text-white' size={40} />}
+                              </div>
+                         </div>
                     </div>
                </div>
           </div>
