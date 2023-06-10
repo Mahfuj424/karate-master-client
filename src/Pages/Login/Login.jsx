@@ -10,10 +10,12 @@ const Login = () => {
      const {  signIn, googleSignIn } = useContext(AuthContext);
      const navigate = useNavigate();
 
-    const onSubmit = () => {
-        signIn()
+    const onSubmit = (data) => {
+        console.log(data);
+        signIn(data.email, data.password)
             .then(result => {
-            navigate('/')
+                navigate('/')
+                console.log(result);
             })
             .catch(err => {
             console.log(err.message);
@@ -38,28 +40,15 @@ const Login = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-white">Name</span>
+                                    <span className="label-text text-white">Email</span>
                                 </label>
-                                <input type="text" {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered text-black" />
-                                {errors.name && <span className="text-red-600">Name is required</span>}
-                            </div>
-                            <div>
-                                <label htmlFor='image' className='block mb-2 text-sm'>
-                                    Select Image:
-                                </label>
-                                <input {...register("image", { required: true })}
-                                    required
-                                    type='file'
-                                    id='image'
-                                    name='image'
-                                    accept='image/*'
-                                />
+                                <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered text-black" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text text-white">Email</span>
+                                    <span className="label-text text-white">Password</span>
                                 </label>
-                                <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered text-black" />
+                                <input type="password"  {...register("password", { required: true })} name="password" placeholder="Password" className="input input-bordered text-black" />
                                 
                             </div>
                             <div className="form-control mt-6">

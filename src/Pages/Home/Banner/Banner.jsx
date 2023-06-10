@@ -13,7 +13,7 @@ const Banner = () => {
                <Swiper navigation={true} autoplay modules={[Navigation, Autoplay]} className="mySwiper ">
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
-                              <div>
+                              <div className="mt-10">
                                    <h1 className="text-6xl font-semibold">WELCOME TO<br />
                                    KARATE AND MARTIAL <br />
                                    ARTS SCHOOL</h1>
@@ -25,7 +25,7 @@ const Banner = () => {
                     </div></SwiperSlide>
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
-                              <div>
+                              <div className="mt-10">
                                    <h1 className="text-6xl font-semibold">EVERY GREAT <br />
                                         JOURNEY STARTS WITH <br />
                                         ONE STEP!</h1>
@@ -37,7 +37,7 @@ const Banner = () => {
                     </div></SwiperSlide>
                     <SwiperSlide><div className="container px-3 md:flex md:justify-between">
                          <div className="flex items-center ">
-                              <div>
+                              <div className="mt-10">
                                    <h1 className="text-6xl font-semibold">BUILDING STRONGER<br />
                                    MINDS & BODIES<br />
                                    SINCE 1986.</h1>

@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/images/logo.jpg'
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { FaArrowAltCircleRight } from "react-icons/fa"
+import { RxAvatar } from "react-icons/rx";
 
 const Navbar = () => {
      const { user, logOut } = useContext(AuthContext);
@@ -92,7 +93,10 @@ const Navbar = () => {
                          </ul>
                     </div>
                     <div className="navbar-end">
-                         <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" />
+                         {
+                              user ? <img className='w-12 h-12 rounded-full' src={`${user?.photoURL}`} alt="" />
+                                   : <RxAvatar className='w-12 h-12'/>
+                         }
                     </div>
                </div>
           </div>
