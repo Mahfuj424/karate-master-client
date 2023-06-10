@@ -1,16 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {  FaWallet,  FaHome, FaBook, } from 'react-icons/fa';
 import { RxAvatar } from "react-icons/rx";
-// import useCart from "../hooks/useCart";
-// import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-     //     const [cart] = useCart();
-
-     // TODO: load data from the server to have dynamic isAdmin based on Data
      const isAdmin = false;
-     const isStudent = true;
-     const isInstructor = false;
+     const isStudent = false;
+     const isInstructor = true;
 
      return (
           <div className="drawer lg:drawer-open ">
@@ -27,6 +22,7 @@ const Dashboard = () => {
 
                          {isAdmin &&
                               <>
+                              <h1 className="text-3xl font-semibold text-center mb-5">Admin</h1>
                                    <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
                                    <li><NavLink to="/dashboard/adminhome"><FaBook></FaBook>Manage Classes</NavLink></li>
                                    <li><NavLink to="/dashboard/adminhome"><RxAvatar />Manage User</NavLink></li>
@@ -35,6 +31,7 @@ const Dashboard = () => {
 
                          {isInstructor &&
                               <>
+                              <h1 className="text-3xl font-semibold text-center mb-5">Instructor</h1>
                                    <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome>Instructor Home</NavLink></li>
                                    <li><NavLink to="/dashboard/adminhome"><FaBook></FaBook>Add A Class</NavLink></li>
                                    <li><NavLink to="/dashboard/adminhome"><FaBook></FaBook>My Classes</NavLink></li>
@@ -44,6 +41,7 @@ const Dashboard = () => {
 
                          {isStudent &&
                               <>
+                              <h1 className="text-3xl font-semibold text-center mb-5">Student</h1>
                                    <li><NavLink to="/dashboard/studentHome"><FaHome></FaHome>Student Home</NavLink></li>
                                    <li><NavLink to="/dashboard/myClasses"><FaBook></FaBook>My Selected Classes</NavLink></li>
                                    <li><NavLink to="/dashboard/enrolledClasses"><FaBook></FaBook>My Enrolled Classes</NavLink></li>

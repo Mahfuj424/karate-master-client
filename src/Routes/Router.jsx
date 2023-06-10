@@ -48,7 +48,7 @@ const Router = createBrowserRouter([
       element: <Dashboard />,
       children: [
          {
-            path: '/dashboard/studentHome',
+            path: '/dashboard',
             element: <StudentHome/>
          },
          {
