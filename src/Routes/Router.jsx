@@ -16,6 +16,7 @@ import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import AddClass from "../Pages/Dashboard/AddAclass/AddClass";
 import MyClass from "../Pages/Dashboard/myClass/MyClass";
 import UpdateClass from "../Pages/Dashboard/myClass/UpdateClass";
+import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 // import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 
@@ -79,6 +80,10 @@ const Router = createBrowserRouter([
             path: 'updateClass/:id',
             element: <UpdateClass />,
             loader: ()=> fetch(`http://localhost:5000/addClass`)
+         },
+         {
+            path: 'manageClass',
+            element: <ManageClasses/>
          }
       ]
    }
