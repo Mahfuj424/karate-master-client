@@ -17,6 +17,7 @@ import AddClass from "../Pages/Dashboard/AddAclass/AddClass";
 import MyClass from "../Pages/Dashboard/myClass/MyClass";
 import UpdateClass from "../Pages/Dashboard/myClass/UpdateClass";
 import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
+import ManageUser from "../Pages/Dashboard/manageUser/ManageUser";
 // import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 
@@ -84,6 +85,10 @@ const Router = createBrowserRouter([
          {
             path: 'manageClass',
             element: <ManageClasses/>
+         },
+         {
+            path: 'manageUser',
+            element: <ManageUser/>
          }
       ]
    }

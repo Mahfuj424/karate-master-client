@@ -25,7 +25,7 @@ const ManageClasses = () => {
           <div>
                <div className="overflow-x-auto">
                     <table className="table bg-gray-600 text-white w-[97%] mx-auto mt-10">
-                         {/* head */}
+                    {/* head */}
                          <thead>
                               <tr className="text-white">
                                    <th>#</th>

@@ -25,7 +25,7 @@ const Dashboard = () => {
                               <h1 className="text-3xl font-semibold text-center mb-5">Admin</h1>
                                    <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
                                    <li><NavLink to="/dashboard/manageClass"><FaBook></FaBook>Manage Classes</NavLink></li>
-                                   <li><NavLink to="/dashboard/adminhome"><RxAvatar />Manage User</NavLink></li>
+                                   <li><NavLink to="/dashboard/manageUser"><RxAvatar />Manage User</NavLink></li>
                               </>
                          }
 
