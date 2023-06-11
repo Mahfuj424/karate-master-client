@@ -3,9 +3,9 @@ import {  FaWallet,  FaHome, FaBook, } from 'react-icons/fa';
 import { RxAvatar } from "react-icons/rx";
 
 const Dashboard = () => {
-     const isAdmin = false;
+     const isAdmin = true;
      const isStudent = false;
-     const isInstructor = true;
+     const isInstructor = false;
 
      return (
           <div className="drawer lg:drawer-open ">
@@ -32,9 +32,9 @@ const Dashboard = () => {
                          {isInstructor &&
                               <>
                               <h1 className="text-3xl font-semibold text-center mb-5">Instructor</h1>
-                                   <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome>Instructor Home</NavLink></li>
-                                   <li><NavLink to="/dashboard/adminhome"><FaBook></FaBook>Add A Class</NavLink></li>
-                                   <li><NavLink to="/dashboard/adminhome"><FaBook></FaBook>My Classes</NavLink></li>
+                                   <li><NavLink to="/dashboard/kjalsfj"><FaHome></FaHome>Instructor Home</NavLink></li>
+                                   <li><NavLink to="/dashboard/addClass"><FaBook></FaBook>Add A Class</NavLink></li>
+                                   <li><NavLink to="/dashboard/myClass"><FaBook></FaBook>My Classes</NavLink></li>
                               </>
                          }
 

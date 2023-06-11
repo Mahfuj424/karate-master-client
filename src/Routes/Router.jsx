@@ -13,6 +13,9 @@ import MyClasses from "../Pages/Dashboard/MyClasses/MyClasses";
 import EnrolledClasses from "../Pages/Dashboard/EnrolledClass/EnrolledClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import AddClass from "../Pages/Dashboard/AddAclass/AddClass";
+import MyClass from "../Pages/Dashboard/myClass/MyClass";
+import UpdateClass from "../Pages/Dashboard/myClass/UpdateClass";
 // import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 
@@ -63,6 +66,19 @@ const Router = createBrowserRouter([
          {
             path: 'payment',
             element: <Payment/>
+         },
+         {
+            path: 'addClass',
+            element: <AddClass/>
+         },
+         {
+            path: 'myClass',
+            element: <MyClass/>
+         },
+         {
+            path: 'updateClass/:id',
+            element: <UpdateClass />,
+            loader: ()=> fetch(`http://localhost:5000/addClass`)
          }
       ]
    }

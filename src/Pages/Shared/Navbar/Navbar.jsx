@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { RxAvatar } from 'react-icons/rx'
 import logo from '../../../assets/images/logo.jpg'
-import { FiLogOut } from 'react-icons/fi'
+import { BiArrowFromLeft } from 'react-icons/bi'
 import { AuthContext } from '../../../Provider/AuthProvider';
 const Navbar = () => {
      const { user, logOut } = useContext(AuthContext)
@@ -14,7 +14,7 @@ const Navbar = () => {
           <p className='text-lg hover:text-rose-500 transition-all '> {
                user ?
                     <NavLink onClick={() => logOut()}><span className='flex items-center gap-1'>
-                         <FiLogOut /> <span>LogOut</span></span></NavLink>
+                          <span>LogOut</span> <BiArrowFromLeft /></span></NavLink>
                     :
                     <NavLink className={({ isActive }) => isActive ? 'border-b-2 pb-2 text-rose-500 border-rose-500' : ''} to='/login'>Login</NavLink>
                     
