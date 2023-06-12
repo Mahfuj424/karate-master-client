@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import { saveUser } from "../../Hooks/SaveUser";
 const Regiser = () => {
 
      const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -16,6 +17,7 @@ const Regiser = () => {
           googleSignIn()
                .then(result => {
                     navigate('/')
+                    saveUser(result.user)
                     console.log(result);
                })
                .catch(err => console.log(err.message))
@@ -28,7 +30,7 @@ const Regiser = () => {
           createUser(data.email, data.password)
                .then(result => {
 
-
+                    saveUser(result.user);
                     const image = data.image[0]
 
                     const formData = new FormData()

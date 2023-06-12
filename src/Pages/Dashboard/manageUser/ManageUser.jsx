@@ -1,7 +1,10 @@
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { AdminRole, InstructorRole } from "../../../Hooks/SaveUser";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 
 
@@ -9,31 +12,53 @@ const ManageUser = () => {
 
      const { user } = useContext(AuthContext);
      // const [allClass, setAllClass]=useState([])
+     console.log(user);
+
+     const [refresh, setRefresh]=useState(false)
 
      const [axiosSecure] = useAxiosSecure();
 
+     const [userData, setUserData] = useState([])
+     console.log(userData);
 
-     const userInfo = { name: user?.displayName, email: user?.email, role: 'student' }
-
-     useEffect(() => {
-          fetch('http://localhost:5000/user', {
-               method: 'POST',
-               headers: {
-                    'content-type': 'application/json'
-               },
-               body: JSON.stringify(userInfo)
-          })
-               .then(res => res.json())
+     const handleInstructor = email => {
+          InstructorRole(email)
                .then(data => {
                     console.log(data);
+                    setRefresh(!refresh)
+                    if (data.modifiedCount > 0) {
+                         Swal.fire({
+                             title: 'Success!',
+                             text: 'You Are Now Instructor',
+                             icon: 'success',
+                             confirmButtonText: 'Done'
+                         })
+                     }
+                    toast.success('you are a instructor')
                })
-     }, [])
+     }
 
+
+     const handleAdmin = email => {
+          AdminRole(email)
+               .then(data => {
+                    console.log(data);
+                    if (data.modifiedCount > 0) {
+                         Swal.fire({
+                             title: 'Success!',
+                             text: 'You Are Now Admin',
+                             icon: 'success',
+                             confirmButtonText: 'Done'
+                         })
+                     }
+               })
+     }
 
      useEffect(() => {
-          axiosSecure.get('http://localhost:5000/addClass')
+          axiosSecure.get('http://localhost:5000/user')
                .then(result => {
-                    console.log(result);
+                    console.log(result.data);
+                    setUserData(result.data)
                })
                .catch(err => {
                     console.log(err.message);
@@ -55,16 +80,22 @@ const ManageUser = () => {
                               </tr>
                          </thead>
                          <tbody >
-                              <tr>
-                                   <th>{ }</th>
-                                   <td>{user.displayName}</td>
-                                   <td>{user.email}</td>
-                                   <th>role</th>
-                                   <th className="flex gap-2 flex-col">
-                                        <button className="btn btn-xs hover:bg-black bg-gray-600 text-white">Instructor</button>
-                                        <button className="btn btn-xs hover:bg-black bg-gray-600 text-white">Admin</button>
-                                   </th>
-                              </tr>
+                              {
+                                   userData?.map((user, index) => {
+                                        console.log(user);
+                                        return <tr key={user._id}>
+                                             <th>{index + 1}</th>
+                                             <td>{user.name}</td>
+                                             <td>{user.email}</td>
+                                             <th>{user.role}</th>
+                                             <th className="flex gap-2 flex-col">
+                                                  <button onClick={() => handleInstructor(user?.email)} className="btn btn-xs hover:bg-black bg-gray-600 text-white">Instructor</button>
+                                                  <button onClick={() => handleAdmin(user?.email)} className="btn btn-xs hover:bg-black bg-gray-600 text-white">Admin</button>
+                                             </th>
+                                        </tr>
+                                   })
+                              }
+
                          </tbody>
                     </table>
                </div>

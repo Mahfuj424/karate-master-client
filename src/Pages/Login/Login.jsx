@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { saveUser } from "../../Hooks/SaveUser";
 
 const Login = () => {
 
@@ -17,6 +18,7 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 navigate(pathName)
+                saveUser(result.user)
                 console.log(result);
             })
             .catch(err => {
@@ -26,8 +28,11 @@ const Login = () => {
 
     const handleGoogleUser = () => {
         googleSignIn()
-            .then(() => {
+            .then((result) => {
+                saveUser(result.user)
+                console.log(result.user);
                 navigate(pathName)
+
             })
             .catch(err => {
                 console.log(err.message);

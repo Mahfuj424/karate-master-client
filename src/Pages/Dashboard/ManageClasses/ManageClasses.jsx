@@ -1,4 +1,6 @@
 
+import Swal from "sweetalert2";
+import { StatusApprove } from "../../../Hooks/SaveUser";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 
@@ -8,6 +10,22 @@ const ManageClasses = () => {
      const [axiosSecure] = useAxiosSecure();
      const [allClass, setAllClass] = useState([])
      console.log(allClass);
+
+
+     const handleApproveClass = id => {
+          StatusApprove(id)
+               .then(data => {
+                    console.log(data);
+                    if (data.modifiedCount > 0) {
+                         Swal.fire({
+                             title: 'Success!',
+                             text: 'You Are Now Instructor',
+                             icon: 'success',
+                             confirmButtonText: 'Done'
+                         })
+                     }
+          })
+     }
 
      useEffect(() => {
           axiosSecure.get('/addClass')
@@ -60,7 +78,7 @@ const ManageClasses = () => {
                                              <th className="text-center">{0}</th>
                                              <th className="text-center">{singleClass.status}</th>
                                              <th className="flex gap-2 flex-col">
-                                                  <button className="btn btn-xs hover:bg-black bg-gray-600 text-white">Approve</button>
+                                                  <button onClick={()=> handleApproveClass(singleClass._id)} className="btn btn-xs hover:bg-black bg-gray-600 text-white">Approve</button>
                                                   <button className="btn btn-xs hover:bg-black bg-gray-600 text-white">Deny</button>
                                                   <button className="btn btn-xs hover:bg-black bg-gray-600 text-white">Feedback</button>
                                              </th>
