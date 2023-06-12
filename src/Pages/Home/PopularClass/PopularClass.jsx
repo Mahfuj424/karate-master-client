@@ -21,7 +21,8 @@ const PopularClass = () => {
 
      return (
           <div className="w-full mx-auto my-20">
-                    <h1 className="text-4xl text-white my-8 text-center">Popular Classes</h1>
+
+                    <h1 className="text-4xl font-bold text-white my-8 text-center">Popular Classes</h1>
                <div className="grid md:grid-cols-3 grid-cols-1">
                     {
                          classData?.map(classes => {
