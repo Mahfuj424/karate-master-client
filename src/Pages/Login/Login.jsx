@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
 
@@ -39,6 +40,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>MARTIAL ARTS | LOGIN </title>
+            </Helmet>
             <div className="hero min-h-screen">
                 <div className="hero-content">
                     <div className="card shadow-2xl bg-gray-700 text-white w-96">

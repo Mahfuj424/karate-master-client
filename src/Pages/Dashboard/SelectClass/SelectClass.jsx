@@ -5,19 +5,19 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 const SelectClass = () => {
 
-     const {user}= useContext(AuthContext)
+     const { user } = useContext(AuthContext)
 
-     
+
      const [classesData, setClassesData] = useState([])
      console.log(classesData);
-     
-     
+
+
      useEffect(() => {
-          fetch(`http://localhost:5000/select/${user?.email}`)
+          fetch(`https://martial-arts-server-blush.vercel.app/select/${user?.email}`)
                .then(res => res.json())
                .then(data => {
                     setClassesData(data)
-          })
+               })
      }, [])
 
      console.log(classesData);

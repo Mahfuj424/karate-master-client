@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 // import { AuthContext } from "../../Provider/AuthProvider";
 
 
@@ -14,12 +15,12 @@ const Classes = () => {
      // const {className, instructorName, availableSeats, price, image,  } = classesData;
      // console.log(classesData);
 
-     
-     
+
+
      //  console.log(user?.email, className, instructorName, availableSeats, price, image );
 
      useEffect(() => {
-          axiosSecure.get('http://localhost:5000/classesData')
+          axiosSecure.get('https://martial-arts-server-blush.vercel.app/classesData')
                .then(result => {
                     setClassesData(result.data)
                })
@@ -28,17 +29,17 @@ const Classes = () => {
                })
      }, [])
 
-     
+
 
 
      const handleSelected = (classes) => {
           console.log(classes);
-          const { className, instructorName, availableSeats, image,  price } = classes;
+          const { className, instructorName, availableSeats, image, price } = classes;
 
-          const selectedClass = {className, instructorName, availableSeats, image, instructorEmail:user?.email, price}
+          const selectedClass = { className, instructorName, availableSeats, image, instructorEmail: user?.email, price }
 
-         
-          fetch('http://localhost:5000/selected', {
+
+          fetch('https://martial-arts-server-blush.vercel.app/selected', {
                method: 'POST',
                headers: {
                     'content-type': 'application/json'
@@ -59,11 +60,14 @@ const Classes = () => {
                })
      }
 
-     
+
 
 
      return (
           <div className="py-32 grid grid-cols-1 md:grid-cols-3 w-full mx-auto">
+               <Helmet>
+                    <title>MARTIAL ARTS | CLASSES</title>
+               </Helmet>
                {
                     classesData.map(classes => {
                          return <div key={classes._id} className="card w-96 bg-gray-800 text-white shadow-xl">
@@ -77,7 +81,7 @@ const Classes = () => {
                                    <h3>Price :  {classes.price}</h3>
                                    <p>{classes.email}</p>
                                    <div className="card-actions">
-                                        <button onClick={()=>handleSelected(classes)} className="btn btn-error">Select</button>
+                                        <button onClick={() => handleSelected(classes)} className="btn btn-error">Select</button>
                                    </div>
                               </div>
                          </div>

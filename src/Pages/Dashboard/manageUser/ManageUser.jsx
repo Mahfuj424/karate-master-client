@@ -14,7 +14,7 @@ const ManageUser = () => {
      // const [allClass, setAllClass]=useState([])
      console.log(user);
 
-     const [refresh, setRefresh]=useState(false)
+     const [refresh, setRefresh] = useState(false)
 
      const [axiosSecure] = useAxiosSecure();
 
@@ -28,12 +28,12 @@ const ManageUser = () => {
                     setRefresh(!refresh)
                     if (data.modifiedCount > 0) {
                          Swal.fire({
-                             title: 'Success!',
-                             text: 'You Are Now Instructor',
-                             icon: 'success',
-                             confirmButtonText: 'Done'
+                              title: 'Success!',
+                              text: 'You Are Now Instructor',
+                              icon: 'success',
+                              confirmButtonText: 'Done'
                          })
-                     }
+                    }
                     toast.success('you are a instructor')
                })
      }
@@ -45,17 +45,17 @@ const ManageUser = () => {
                     console.log(data);
                     if (data.modifiedCount > 0) {
                          Swal.fire({
-                             title: 'Success!',
-                             text: 'You Are Now Admin',
-                             icon: 'success',
-                             confirmButtonText: 'Done'
+                              title: 'Success!',
+                              text: 'You Are Now Admin',
+                              icon: 'success',
+                              confirmButtonText: 'Done'
                          })
-                     }
+                    }
                })
      }
 
      useEffect(() => {
-          axiosSecure.get('http://localhost:5000/user')
+          axiosSecure.get('https://martial-arts-server-blush.vercel.app/user')
                .then(result => {
                     console.log(result.data);
                     setUserData(result.data)

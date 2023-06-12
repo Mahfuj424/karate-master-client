@@ -1,8 +1,8 @@
 
 export const saveUser = user => {
      const userInfo = { name: user?.displayName, email: user?.email, }
- console.log(user?.displayName);
-     fetch(`http://localhost:5000/user/${user?.email}`, {
+     console.log(user?.displayName);
+     fetch(`https://martial-arts-server-blush.vercel.app/user/${user?.email}`, {
           method: 'PUT',
           headers: {
                'content-type': 'application/json'
@@ -23,8 +23,8 @@ export const InstructorRole = email => {
      const userInfo = {
           role: 'instructor'
      }
-     
-     return fetch(`http://localhost:5000/user/${email}`, {
+
+     return fetch(`https://martial-arts-server-blush.vercel.app/user/${email}`, {
           method: 'PUT',
           headers: {
                'content-type': 'application/json'
@@ -40,8 +40,8 @@ export const AdminRole = email => {
      const userInfo = {
           role: 'Admin'
      }
-     
-     return fetch(`http://localhost:5000/user/${email}`, {
+
+     return fetch(`https://martial-arts-server-blush.vercel.app/user/${email}`, {
           method: 'PUT',
           headers: {
                'content-type': 'application/json'
@@ -58,8 +58,8 @@ export const StatusApprove = id => {
      const userInfo = {
           status: 'approve'
      }
-     
-     return fetch(`http://localhost:5000/addClasses/${id}`, {
+
+     return fetch(`https://martial-arts-server-blush.vercel.app/addClasses/${id}`, {
           method: 'PUT',
           headers: {
                'content-type': 'application/json'
@@ -75,8 +75,8 @@ export const StatusDeny = id => {
      const userInfo = {
           status: 'deny'
      }
-     
-     return fetch(`http://localhost:5000/addClasses/${id}`, {
+
+     return fetch(`https://martial-arts-server-blush.vercel.app/addClasses/${id}`, {
           method: 'PUT',
           headers: {
                'content-type': 'application/json'
@@ -92,8 +92,8 @@ export const StatusFeedback = id => {
      const userInfo = {
           status: 'feedback'
      }
-     
-     return fetch(`http://localhost:5000/addClasses/${id}`, {
+
+     return fetch(`https://martial-arts-server-blush.vercel.app/addClasses/${id}`, {
           method: 'PUT',
           headers: {
                'content-type': 'application/json'
@@ -102,4 +102,3 @@ export const StatusFeedback = id => {
      })
           .then(res => res.json())
 }
-    

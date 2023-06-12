@@ -1,26 +1,27 @@
 import { NavLink, Outlet } from "react-router-dom";
-import {  FaWallet,  FaHome, FaBook, } from 'react-icons/fa';
+import { FaWallet, FaHome, FaBook, } from 'react-icons/fa';
 import { RxAvatar } from "react-icons/rx";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
      const { user } = useContext(AuthContext);
-     const [axiosSecure]=useAxiosSecure()
+     const [axiosSecure] = useAxiosSecure()
 
      const [roles, setRoles] = useState([])
-     
+
      useEffect(() => {
-          axiosSecure.get(`http://localhost:5000/users/${user?.email}`)
+          axiosSecure.get(`https://martial-arts-server-blush.vercel.app/users/${user?.email}`)
                .then(result => {
                     console.log(result.data);
                     setRoles(result.data.role)
                })
                .catch(err => {
-               console.log(err.message);
-          })
-     },[])
+                    console.log(err.message);
+               })
+     }, [])
 
      const isAdmin = roles === 'Admin'
      const isInstructor = roles === 'instructor'
@@ -43,7 +44,12 @@ const Dashboard = () => {
 
                          {isAdmin &&
                               <>
-                              <h1 className="text-3xl font-semibold text-center mb-5">Admin</h1>
+                              <Helmet>
+                                   <title>
+                                        MARTIAL ARTS | ADMIN DASHBOARD
+                                   </title>
+                              </Helmet>
+                                   <h1 className="text-3xl font-semibold text-center mb-5">Admin</h1>
                                    <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Admin Home</NavLink></li>
                                    <li><NavLink to="/dashboard/manageClass"><FaBook></FaBook>Manage Classes</NavLink></li>
                                    <li><NavLink to="/dashboard/manageUser"><RxAvatar />Manage User</NavLink></li>
@@ -52,7 +58,12 @@ const Dashboard = () => {
 
                          {isInstructor &&
                               <>
-                              <h1 className="text-3xl font-semibold text-center mb-5">Instructor</h1>
+                              <Helmet>
+                                   <title>
+                                        MARTIAL ARTS | INSTRUCTOR DASHBOARD
+                                   </title>
+                              </Helmet>
+                                   <h1 className="text-3xl font-semibold text-center mb-5">Instructor</h1>
                                    <li><NavLink to="/dashboard/kjalsfj"><FaHome></FaHome>Instructor Home</NavLink></li>
                                    <li><NavLink to="/dashboard/addClass"><FaBook></FaBook>Add A Class</NavLink></li>
                                    <li><NavLink to="/dashboard/myClass"><FaBook></FaBook>My Classes</NavLink></li>
@@ -62,7 +73,12 @@ const Dashboard = () => {
 
                          {isStudent &&
                               <>
-                              <h1 className="text-3xl font-semibold text-center mb-5">Student</h1>
+                              <Helmet>
+                                   <title>
+                                        MARTIAL ARTS | STUDENT DASHBOARD
+                                   </title>
+                              </Helmet>
+                                   <h1 className="text-3xl font-semibold text-center mb-5">Student</h1>
                                    <li><NavLink to="/dashboard/studentHome"><FaHome></FaHome>Student Home</NavLink></li>
                                    <li><NavLink to="/dashboard/selectClass"><FaBook></FaBook>My Selected Classes</NavLink></li>
                                    <li><NavLink to="/dashboard/enrolledClasses"><FaBook></FaBook>My Enrolled Classes</NavLink></li>
@@ -71,8 +87,8 @@ const Dashboard = () => {
                          }
 
 
-                         
-                         <hr  className="my-8"/>
+
+                         <hr className="my-8" />
                          <li><NavLink to="/"><FaHome></FaHome> Home</NavLink> </li>
                          <li><NavLink to="/classes"><FaBook></FaBook>Classes</NavLink></li>
                     </ul>

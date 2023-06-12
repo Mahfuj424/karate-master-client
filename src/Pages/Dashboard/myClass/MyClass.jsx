@@ -7,7 +7,7 @@ const MyClass = () => {
      const [myClass, setMyClass] = useState();
 
      useEffect(() => {
-          fetch('http://localhost:5000/addClass')
+          fetch('https://martial-arts-server-blush.vercel.app/addClass')
                .then(res => res.json())
                .then(data => {
                     console.log(data)
@@ -36,8 +36,8 @@ const MyClass = () => {
                          <tbody >
                               {
                                    myClass?.map((topic, index) => {
-                                       return <tr key={topic._id}>
-                                             <th>{index+1}</th>
+                                        return <tr key={topic._id}>
+                                             <th>{index + 1}</th>
                                              <td>
                                                   <div>
                                                        <div className="avatar">
@@ -51,7 +51,7 @@ const MyClass = () => {
                                              <td>{topic.status}</td>
                                              <th className="text-center">0</th>
                                              <th className="text-center">{topic.availableSeats}</th>
-                                            <th className="text-center">{topic.price}</th>
+                                             <th className="text-center">{topic.price}</th>
                                              <th>
                                                   <Link to={`/dashboard/updateClass/${topic._id}`}><p className="btn btn-success"><FiEdit /></p></Link>
                                              </th>

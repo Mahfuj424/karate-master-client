@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 
 
@@ -12,7 +13,7 @@ const Instructor = () => {
 
 
      useEffect(() => {
-          axiosSecure.get(`http://localhost:5000/instructorData`)
+          axiosSecure.get(`https://martial-arts-server-blush.vercel.app/instructorData`)
                .then(result => {
                     setInstructorData(result.data)
                })
@@ -24,6 +25,9 @@ const Instructor = () => {
 
      return (
           <div className="py-32  grid md:grid-cols-3 grid-cols-1">
+               <Helmet>
+                    <title>MARTIAL ARTS | INSTRUCTOR</title>
+               </Helmet>
                {
                     instructorData.map(instructor => {
                          return <div key={instructor._id} className="card w-96 bg-gray-800 text-white shadow-xl">

@@ -33,26 +33,26 @@ const Router = createBrowserRouter([
          },
          {
             path: 'instructor',
-            element: <Instructor/>,
+            element: <Instructor />,
          },
          {
             path: 'classes',
-            element: <Classes/>
+            element: <Classes />
          },
          {
             path: 'register',
-            element: <Regiser/>,
+            element: <Regiser />,
          },
          {
             path: 'login',
-            element: <Login/>
+            element: <Login />
          }
       ]
-      
+
    },
    {
       path: 'dashboard',
-      element:<PrivetRoute><Dashboard /></PrivetRoute>,
+      element: <PrivetRoute><Dashboard /></PrivetRoute>,
       children: [
          // {
          //    path: 'dashboard',
@@ -60,40 +60,40 @@ const Router = createBrowserRouter([
          // },
          {
             path: 'myClasses',
-            element: <MyClasses/>
+            element: <MyClasses />
          },
          {
             path: 'enrolledClasses',
-            element: <EnrolledClasses/>
+            element: <EnrolledClasses />
          },
          {
             path: 'payment',
-            element: <Payment/>
+            element: <Payment />
          },
          {
             path: 'addClass',
-            element: <AddClass/>
+            element: <AddClass />
          },
          {
             path: 'myClass',
-            element: <MyClass/>
+            element: <MyClass />
          },
          {
             path: 'updateClass/:id',
             element: <UpdateClass />,
-            loader: ()=> fetch(`http://localhost:5000/addClass`)
+            loader: () => fetch(`https://martial-arts-server-blush.vercel.app/addClass`)
          },
          {
             path: 'manageClass',
-            element: <ManageClasses/>
+            element: <ManageClasses />
          },
          {
             path: 'manageUser',
-            element: <ManageUser/>
+            element: <ManageUser />
          },
          {
             path: 'selectClass',
-            element: <SelectClass/>
+            element: <SelectClass />
          }
       ]
    }

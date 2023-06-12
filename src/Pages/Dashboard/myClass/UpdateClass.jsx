@@ -24,9 +24,9 @@ const UpdateClass = () => {
         const price = form.price.value;
         const availableSeats = form.seat.value;
         console.log(className, image, price);
-        const updateClass = { className, image, price, availableSeats}
+        const updateClass = { className, image, price, availableSeats }
 
-        fetch(`http://localhost:5000/addClass/${_id}`, {
+        fetch(`https://martial-arts-server-blush.vercel.app/addClass/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

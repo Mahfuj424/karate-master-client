@@ -7,6 +7,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { saveUser } from "../../Hooks/SaveUser";
+import { Helmet } from "react-helmet";
 const Regiser = () => {
 
      const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -17,7 +18,7 @@ const Regiser = () => {
           googleSignIn()
                .then(result => {
                     navigate('/')
-                    
+
                     console.log(result);
                })
                .catch(err => console.log(err.message))
@@ -30,7 +31,7 @@ const Regiser = () => {
           createUser(data.email, data.password)
                .then(result => {
 
-                    
+
                     const image = data.image[0]
 
                     const formData = new FormData()
@@ -48,7 +49,7 @@ const Regiser = () => {
                               updateUserProfile(data.name, imageUrl)
                                    .then(result => {
                                         console.log(result);
-                                        
+
                                    })
                                    .catch(err => {
                                         console.log(err.message);
@@ -99,6 +100,9 @@ const Regiser = () => {
 
      return (
           <div>
+               <Helmet>
+                    <title>MARTIAL ARTS | REGISTER </title>
+               </Helmet>
                <div className="hero min-h-screen">
                     <div className="hero-content">
                          <div className="card shadow-2xl bg-gray-700 text-white w-96 mt-20">

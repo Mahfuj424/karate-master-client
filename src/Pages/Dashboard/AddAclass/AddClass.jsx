@@ -25,7 +25,7 @@ const AddClass = () => {
           }
           console.log(addClass);
 
-          fetch('http://localhost:5000/addClass', {
+          fetch('https://martial-arts-server-blush.vercel.app/addClass', {
                method: 'POST',
                headers: {
                     'content-type': 'application/json'
