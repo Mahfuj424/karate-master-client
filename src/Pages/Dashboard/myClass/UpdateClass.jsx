@@ -7,6 +7,7 @@ const UpdateClass = () => {
 
     const allClass = useLoaderData();
     const { id } = useParams();
+    console.log(allClass);
 
     const singleClass = allClass && allClass.find(data => data._id == id)
     console.log(singleClass);

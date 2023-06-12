@@ -1,11 +1,32 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {  FaWallet,  FaHome, FaBook, } from 'react-icons/fa';
 import { RxAvatar } from "react-icons/rx";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const Dashboard = () => {
-     const isAdmin = true;
-     const isStudent = false;
-     const isInstructor = false;
+     const { user } = useContext(AuthContext);
+     const [axiosSecure]=useAxiosSecure()
+
+     const [roles, setRoles] = useState([])
+     
+     useEffect(() => {
+          axiosSecure.get(`http://localhost:5000/users/${user?.email}`)
+               .then(result => {
+                    console.log(result.data);
+                    setRoles(result.data.role)
+               })
+               .catch(err => {
+               console.log(err.message);
+          })
+     },[])
+
+     const isAdmin = roles === 'Admin'
+     const isInstructor = roles === 'instructor'
+     const isStudent = roles === undefined || null
+
+
 
      return (
           <div className="drawer lg:drawer-open ">
