@@ -1,15 +1,15 @@
 // eslint-disable-next-line no-unused-vars
-
+import logo from '../../../assets/images/logo.jpg'
 // import logo from '../../assets/logo.jpg'
-import { FaPlaneDeparture } from "react-icons/fa";
+// import { FaPlaneDeparture } from "react-icons/fa";
 
 const Footer = () => {
     return (
         <footer className="bg-black">
             <div className="footer p-10 text-base-content text-white">
                 <div>
-                    <FaPlaneDeparture className='h-14 w-14 text-gray-400' />
-                    <p className='text-lg'>Aeroplane Toy <br /> ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <img src={logo} className='w-16 h-16' alt="" />
+                    <p className='text-lg'>MARTIAL ARTS<br /> CINA Industries Ltd.<br />Providing reliable tech since 1992</p>
                 </div>
                 <div>
                     <span className="footer-title">Services</span>

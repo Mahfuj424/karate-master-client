@@ -3,6 +3,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 
 
 import app from "../../firebase/firebase-config";
+import { saveUser } from "../Hooks/SaveUser";
 
 export const AuthContext = createContext(null);
 
@@ -42,6 +43,8 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+
+            saveUser(currentUser)
             setUser(currentUser);
             console.log('current user', currentUser);
 

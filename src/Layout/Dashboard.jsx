@@ -64,7 +64,7 @@ const Dashboard = () => {
                               <>
                               <h1 className="text-3xl font-semibold text-center mb-5">Student</h1>
                                    <li><NavLink to="/dashboard/studentHome"><FaHome></FaHome>Student Home</NavLink></li>
-                                   <li><NavLink to="/dashboard/myClasses"><FaBook></FaBook>My Selected Classes</NavLink></li>
+                                   <li><NavLink to="/dashboard/selectClass"><FaBook></FaBook>My Selected Classes</NavLink></li>
                                    <li><NavLink to="/dashboard/enrolledClasses"><FaBook></FaBook>My Enrolled Classes</NavLink></li>
                                    <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment History</NavLink></li>
                               </>
